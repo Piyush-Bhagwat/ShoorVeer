@@ -10,9 +10,6 @@ const Signup = () => {
       <div className="col-md-4 mb-4">
         <button className="btn btn-success btn-lg btn-block" style={{width:"60vw"}}>Signup as Volunteer</button>
       </div>
-      <div className="col-md-4 mb-4">
-        <button className="btn btn-danger btn-lg btn-block" style={{width:"60vw"}}>Signup as Admin</button>
-      </div>
     </div>
   </div>
   
