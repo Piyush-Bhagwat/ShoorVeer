@@ -1,13 +1,19 @@
 import './App.css';
 import Navbar from './Components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Caregivers from './Components/Caregivers';
-import Allcaregiver from './Components/Allcaregiver';
 function App() {
   return (
     <div className="App">
      
     <Navbar></Navbar>
-    <Allcaregiver></Allcaregiver>
+   <Caregivers></Caregivers>
+   <Caregivers></Caregivers>
+   <Caregivers></Caregivers>
+   <Caregivers></Caregivers>
+   <Caregivers></Caregivers>
+
+
     </div>
   );
 }
