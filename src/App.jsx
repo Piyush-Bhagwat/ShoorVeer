@@ -11,9 +11,11 @@ import { getVolunteers } from "./Firebase/firebaseInit";
 import { useContext } from "react";
 import { AppContext } from "./context/appContext";
 import { useEffect } from "react";
+import VolHome from "./pages/VolHome";
 
 function App() {
-    const { setUserData, setLogged, setMode } = useContext(AppContext);
+    const { setUserData, isLogged, mode, setLogged, setMode } =
+        useContext(AppContext);
 
     useEffect(() => {
         const lsUserData = JSON.parse(localStorage.getItem("userInfo"));
@@ -32,9 +34,22 @@ function App() {
             <CatergoryCard />
             <Router>
                 <Routes>
-                    <Route path="/" element={<Login />} />
+                    <Route
+                        path="/"
+                        element={
+                            isLogged ? (
+                                mode == "pet" ? (
+                                    <HomePage />
+                                ) : (
+                                    <VolHome />
+                                )
+                            ) : (
+                                <Login />
+                            )
+                        }
+                    />
+
                     <Route path="/signup" element={<MainSignup />} />
-                    <Route path="/home" element={<HomePage />} />
                     <Route path="/patientsignup" element={<PatientSignup />} />
                     <Route
                         path="/volunteersignup"

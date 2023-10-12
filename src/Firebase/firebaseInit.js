@@ -35,23 +35,47 @@ const getVolunteers = async () => {
     });
 };
 
-
 const getLogin = async (data) => {
     console.log("Login", data.email);
     const querySnapshotPat = await getDocs(paitientCol);
     querySnapshotPat.forEach((doc) => {
-        if(doc.data().email === data.email && doc.data().password === data.pass){
-            console.log("Email Found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! type Patient");
+        if (
+            doc.data().email === data.email &&
+            doc.data().password === data.pass
+        ) {
+            localStorage.setItem(
+                "userInfo",
+                JSON.stringify({
+                    uid: doc.id,
+                    name: doc.data().name,
+                    email: doc.data().email,
+                    type: "pet",
+                })
+            );
+
+            window.location.reload();
         }
     });
     const querySnapshotVol = await getDocs(volunteerCol);
     querySnapshotVol.forEach((doc) => {
-        if(doc.data().email === data.email && doc.data().password === data.pass){
-            console.log("Email Found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! type Vol");
+        if (
+            doc.data().email === data.email &&
+            doc.data().password === data.pass
+        ) {
+            localStorage.setItem(
+                "userInfo",
+                JSON.stringify({
+                    uid: doc.id,
+                    name: doc.data().name,
+                    email: doc.data().email,
+                    type: "vol",
+                })
+            );
+
+            window.location.reload();
         }
     });
-}
-
+};
 
 const setNewUser = async (data) => {
     try {
@@ -63,9 +87,10 @@ const setNewUser = async (data) => {
                 uid: docRef.id,
                 name: data.name,
                 email: data.email,
-                type:"pet"
+                type: "pet",
             })
         );
+        window.location.reload();
     } catch (er) {
         if (er) console.log(er);
     }
@@ -80,12 +105,20 @@ const setNewVolunteer = async (data) => {
                 uid: docRef.id,
                 name: data.name,
                 email: data.email,
-                type: "vol"
+                type: "vol",
             })
         );
+        window.location.reload();
     } catch (er) {
         if (er) console.log(er);
     }
 };
 
-export { db, getPaitients, getVolunteers,getLogin, setNewUser, setNewVolunteer };
+export {
+    db,
+    getPaitients,
+    getVolunteers,
+    getLogin,
+    setNewUser,
+    setNewVolunteer,
+};
