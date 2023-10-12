@@ -1,5 +1,6 @@
 import { Component } from "react";
 import React from "react";
+import Volunteers from "../Components/Volunteers";
 
 function HomePage() {
     return (
@@ -13,6 +14,8 @@ function HomePage() {
                 <i className="fa-solid fa-location-dot"></i>
                 Bajaj Nagar, Nagpur
             </div>
+
+            <Volunteers name="JOker" />
         </div>
     );
 }
