@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import { setNewUser } from '../Firebase/firebaseInit';
+import { useContext } from 'react';
+import { AppContext } from '../context/appContext';
 
 const PatientSignup = () => {
+
+  const {setUserData, setLogged} = useContext(AppContext);
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    confirmPassword: '',
     address: '',
-    mobileNumber: '',
-    age: '',
+    number: '',
+    age: ''
   });
 
   const handleChange = (e) => {
@@ -19,6 +23,22 @@ const PatientSignup = () => {
       [name]: value,
     }));
   };
+
+  const handleSubmit = ()=>{
+    const userData = setNewUser(formData);
+    setUserData(userData);
+    setLogged(true);
+
+    setFormData({
+      name: '',
+      email: '',
+      password: '',
+      address: '',
+      number: '',
+      age: ''
+    });
+    console.log("Submited: ",formData);
+  }
 
   
 
@@ -60,16 +80,6 @@ const PatientSignup = () => {
                 />
               </div>
               <div className="form-group mt-3">
-                <label>Confirm Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Confirm your password"
-                  name="confirmPassword"
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group mt-3">
                 <label>Address</label>
                 <input
                   type="text"
@@ -85,7 +95,7 @@ const PatientSignup = () => {
                   type="tel"
                   className="form-control"
                   placeholder="Enter your mobile number"
-                  name="mobileNumber"
+                  name="number"
                   onChange={handleChange}
                 />
               </div>
@@ -101,7 +111,7 @@ const PatientSignup = () => {
               </div>
               <button
                 className="btn btn-primary btn-block mb-3 mt-3"
-
+                onClick={handleSubmit}
               >
                 Register
               </button>

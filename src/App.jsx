@@ -8,10 +8,21 @@ import VolunteerSignup from "./pages/VolunteerSignup";
 import HomePage from "./pages/HomePage";
 import CatergoryCard from "./pages/catergoryCard";
 import { db, getDocuments } from "./Firebase/firebaseInit";
+import { useContext } from "react";
+import { AppContext } from "./context/appContext";
+import { useEffect } from "react";
 
 function App() {
+    const { setUserData, setLogged, setMode } = useContext(AppContext);
 
-    getDocuments();
+    useEffect(() => {
+        const lsUserData = JSON.parse(localStorage.getItem("userInfo"));
+        if (lsUserData) {
+            setUserData(lsUserData);
+            setLogged(true);
+            setMode(lsUserData.type);
+        }
+    }, []);
 
     return (
         <div className="App">

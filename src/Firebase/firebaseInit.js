@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, collection } from "@firebase/firestore";
+import { getFirestore, getDocs, addDoc, collection } from "@firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,12 +19,49 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
+const paitientCol = collection(db, "paitient");
+const volunteerCol = collection(db, "volunteer");
+
 const getDocuments = async () => {
-    const querySnapshot = await getDocs(collection(db, "user"));
+    const querySnapshot = await getDocs(paitientCol);
     querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()}`);
     });
 };
 
+const setNewUser = async (data) => {
+    try {
+        const docRef = await addDoc(paitientCol, data);
 
-export { db, getDocuments };
+        localStorage.setItem(
+            "userInfo",
+            JSON.stringify({
+                uid: docRef.id,
+                name: data.name,
+                email: data.email,
+                type:"pet"
+            })
+        );
+    } catch (er) {
+        if (er) console.log(er);
+    }
+};
+
+const setNewVolunteer = async (data) => {
+    try {
+        const docRef = await addDoc(volunteerCol, data);
+        localStorage.setItem(
+            "userInfo",
+            JSON.stringify({
+                uid: docRef.id,
+                name: data.name,
+                email: data.email,
+                type: "vol"
+            })
+        );
+    } catch (er) {
+        if (er) console.log(er);
+    }
+};
+
+export { db, getDocuments, setNewUser, setNewVolunteer };
