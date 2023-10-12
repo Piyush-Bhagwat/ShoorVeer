@@ -6,6 +6,7 @@ import MainSignup from "./pages/MainSignup";
 import PatientSignup from "./pages/PatientSignup";
 import VolunteerSignup from "./pages/VolunteerSignup";
 import HomePage from "./pages/HomePage";
+import Card from "./pages/Card";
 function App() {
     return (
         <div className="App">
