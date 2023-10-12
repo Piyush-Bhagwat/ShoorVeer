@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../context/appContext";
 
-const CatergoryCard = ({ name, isSelected }) => {
+const CatergoryCard = ({ name, id }) => {
+  const {category, setCatergory} = useContext(AppContext);
+
+
     return (
         <div
             className={`category-card ${
-                isSelected && "category-card-selected"
+                category === id && "category-card-selected"
             }`}
+            onClick={() => setCatergory(id)}
         >
             {name}
         </div>

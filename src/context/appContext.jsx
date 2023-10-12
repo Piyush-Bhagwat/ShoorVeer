@@ -10,6 +10,9 @@ const AppContextProvider = (props) => {
     const [mode, setMode] = useState("Pet");
     const [userData, setUserData] = useState({ name: "", email: "", uid: "" });
     const [location, setLocation] = useState({ lat: "", lon: "" });
+    const [volunteerSelected, setVolunteerSelected] = useState(false);
+    const [category, setCatergory] = useState("care-taker");
+    const [volunteerList, setVolunteerList] = useState([]);
 
     useEffect(() => {
         console.log("userData: ", userData);
@@ -20,14 +23,22 @@ const AppContextProvider = (props) => {
         setLocation({ lat: locData.data.latitude, log: locData.data.longitude });
     };
 
+    useEffect(()=>{console.log("VounteerList: ", volunteerList)}, [volunteerList]);
+
     const contextValue = {
         isLogged,
         mode,
         userData,
+        volunteerList,
+        setVolunteerList,
         location,
         getDeviceCurrentLocation,
         setLogged,
         setMode,
+        category,
+        setCatergory,
+        volunteerSelected,
+        setVolunteerSelected,
         setUserData,
     };
 

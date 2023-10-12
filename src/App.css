@@ -77,18 +77,15 @@ h1{
   color: var(--primary-color);
 }
 
-.volunteers-card{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 1.5rem 1rem;
-  justify-content: space-between;
+.catergory-collection{
+  margin: 5% 0;
 }
+
 .category-card{
   background-color: var(--secondary-color);
   display: inline-block;
-  padding: 0.5% 2%;
-  border-radius: 15px;
+  padding: 2% 2%;
+  border-radius: 30px;
   box-shadow: var(--shadow);
   margin: 0 2%;
 }
@@ -97,13 +94,28 @@ h1{
   outline: 3px solid var(--primary-color);
 }
 
+.volunteers-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  margin: 1rem 0;
+  box-shadow: var(--shadow);
+  border-radius: 15px;
+  justify-content: space-between;
+}
 
 .volunteers-card img{
   width: 4rem;
   aspect-ratio: 1;
   border-radius: 50%;
   justify-content: right;
+  box-shadow: var(--shadow);
   right: 0;
+}
+
+.selected{
+  outline: 2px solid var(--primary-color);
 }
 
 .hearticon h3{

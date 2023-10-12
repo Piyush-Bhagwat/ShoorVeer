@@ -1,21 +1,30 @@
-import React from 'react'
-import docimg from '../images/Doctor+Preview.avif'
-function Volunteers({ name }) {
+import React from "react";
+import docimg from "../images/Doctor+Preview.avif";
+import { useContext } from "react";
+import { AppContext } from "../context/appContext";
+function Volunteers({ name, id, likes }) {
+    const { volunteerSelected, setVolunteerSelected } = useContext(AppContext);
+
     return (
-        <div className='volunteers-card'>
+        <div
+            className={`volunteers-card ${
+                volunteerSelected === id && "selected"
+            }`}
+            onClick={() => setVolunteerSelected(id)}
+        >
             <img src={docimg}></img>
             <div className="right-side">
                 <h3>{name}</h3>
-                <div className='hearticon'>
+                <div className="hearticon">
                     <div>
                         <i class="fa-solid fa-heart"></i>
-                        4</div>
+                        {likes}
+                    </div>
                     <i class="fa-solid fa-bookmark"></i>
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
 
-export default Volunteers
+export default Volunteers;

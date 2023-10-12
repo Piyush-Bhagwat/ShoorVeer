@@ -21,6 +21,7 @@ const db = getFirestore(app);
 
 const paitientCol = collection(db, "paitient");
 const volunteerCol = collection(db, "volunteer");
+const requestCol = collection(db, "requests");
 
 const getPaitients = async () => {
     const querySnapshot = await getDocs(paitientCol);
@@ -28,11 +29,15 @@ const getPaitients = async () => {
         console.log(`${doc.id} => ${doc.data()}`);
     });
 };
-const getVolunteers = async () => {
+const getVolunteers = async (category) => {
+    let dat = [];
     const querySnapshot = await getDocs(volunteerCol);
     querySnapshot.forEach((doc) => {
-        // console.log(`${doc.id} => ${doc.data()}`);
+        if(doc.data().service === category){
+            dat.push([doc.data(), doc.id]);
+        }
     });
+    return dat;
 };
 
 const getLogin = async (data) => {
@@ -114,10 +119,21 @@ const setNewVolunteer = async (data) => {
     }
 };
 
+const makeRequest = async (data) => {
+    try {
+        const docRef = await addDoc(requestCol, data);
+    } catch (er) {
+        if (er) {
+            console.log(er);
+        }
+    }
+};
+
 export {
     db,
     getPaitients,
     getVolunteers,
+    makeRequest,
     getLogin,
     setNewUser,
     setNewVolunteer,

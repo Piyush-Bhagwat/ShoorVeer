@@ -13,10 +13,20 @@ import { AppContext } from "./context/appContext";
 import { useEffect } from "react";
 import VolHome from "./pages/VolHome";
 import LocationApp from "./Components/location";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-    const { setUserData,getDeviceCurrentLocation, isLogged, mode, setLogged, setMode } =
-        useContext(AppContext);
+    const {
+        setUserData,
+        getDeviceCurrentLocation,
+        isLogged,
+        setVolunteerList,
+        mode,
+        setLogged,
+        category,
+        setMode,
+    } = useContext(AppContext);
 
     useEffect(() => {
         const lsUserData = JSON.parse(localStorage.getItem("userInfo"));
@@ -25,10 +35,20 @@ function App() {
             setLogged(true);
             setMode(lsUserData.type);
             getDeviceCurrentLocation();
+            getVolunteers(category).then((dat) => {
+                setVolunteerList(dat);
+            });
         }
     }, []);
 
-    // getVolunteers()
+    useEffect(()=>{
+        if(mode === "pet"){
+            getVolunteers(category).then((dat) => {
+                setVolunteerList(dat);
+            });
+        }
+    }, [category]);
+
 
     return (
         <div className="App">
@@ -58,8 +78,10 @@ function App() {
                     />
                 </Routes>
             </Router>
+            {/* 
+            <LocationApp /> */}
 
-            <LocationApp />
+            <ToastContainer />
         </div>
     );
 }
