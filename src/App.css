@@ -62,3 +62,15 @@ h1{
   margin-right: 10px;
   color: var(--primary-color);
 }
+
+.category-card{
+  
+}
+
+.volunteers-card img{
+  width: 10rem;
+  height: 3rem;
+  border-radius: 10rem;
+  justify-content: right;
+  right: 0;
+}
