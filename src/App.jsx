@@ -7,11 +7,16 @@ import PatientSignup from "./pages/PatientSignup";
 import VolunteerSignup from "./pages/VolunteerSignup";
 import HomePage from "./pages/HomePage";
 import CatergoryCard from "./pages/catergoryCard";
+import { db, getDocuments } from "./Firebase/firebaseInit";
 
 function App() {
+
+    getDocuments();
+
     return (
         <div className="App">
             <Navbar />
+            <CatergoryCard />
             <Router>
                 <Routes>
                     <Route path="/" element={<Login />} />
