@@ -63,6 +63,10 @@ h1{
   color: var(--primary-color);
 }
 
+.category-card{
+  
+}
+
 .volunteers-card img{
   width: 10rem;
   height: 3rem;
