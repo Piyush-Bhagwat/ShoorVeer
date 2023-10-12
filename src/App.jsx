@@ -6,10 +6,12 @@ import MainSignup from "./pages/MainSignup";
 import PatientSignup from "./pages/PatientSignup";
 import VolunteerSignup from "./pages/VolunteerSignup";
 import HomePage from "./pages/HomePage";
+import CatergoryCard from "./pages/catergoryCard";
 function App() {
     return (
         <div className="App">
             <Navbar />
+            <CatergoryCard />
             <Router>
                 <Routes>
                     <Route path="/" element={<Login />} />
