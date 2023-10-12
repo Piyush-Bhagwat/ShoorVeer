@@ -12,9 +12,10 @@ import { useContext } from "react";
 import { AppContext } from "./context/appContext";
 import { useEffect } from "react";
 import VolHome from "./pages/VolHome";
+import LocationApp from "./Components/location";
 
 function App() {
-    const { setUserData, isLogged, mode, setLogged, setMode } =
+    const { setUserData,getDeviceCurrentLocation, isLogged, mode, setLogged, setMode } =
         useContext(AppContext);
 
     useEffect(() => {
@@ -23,6 +24,7 @@ function App() {
             setUserData(lsUserData);
             setLogged(true);
             setMode(lsUserData.type);
+            getDeviceCurrentLocation();
         }
     }, []);
 
@@ -56,6 +58,8 @@ function App() {
                     />
                 </Routes>
             </Router>
+
+            <LocationApp />
         </div>
     );
 }
