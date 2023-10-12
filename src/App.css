@@ -2,7 +2,9 @@
 
 :root{
   --primary-color : #9d8ef4;
+  --secondary-color : #9d8ef4a7;
   --text-color : rgb(22, 22, 22); 
+  --shadow: 0px 3px 6px #00000038;
 }
 
 * {
@@ -39,12 +41,12 @@ h1{
   aspect-ratio: 1;
   border: none;
   border-radius: 50%;
+  box-shadow: var(--shadow);
 }
 
 .user-icon a{
   color: white;
 }
-
 
 /* ----------------------------HomePage-------------------------- */
 
@@ -63,14 +65,41 @@ h1{
   color: var(--primary-color);
 }
 
+.volunteers-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1.5rem 1rem;
+  justify-content: space-between;
+}
 .category-card{
-  
+  background-color: var(--secondary-color);
+  display: inline-block;
+  padding: 0.5% 2%;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
 }
 
+.category-card-selected{
+  outline: 3px solid var(--primary-color);
+}
+
+
 .volunteers-card img{
-  width: 10rem;
-  height: 3rem;
-  border-radius: 10rem;
+  width: 4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
   justify-content: right;
   right: 0;
+}
+
+.hearticon h3{
+  justify-content: top;
+  font-size: 1.1rem;
+}
+.hearticon{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
