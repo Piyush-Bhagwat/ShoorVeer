@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Signup = () => {
+const MainSignup = () => {
   return (
     <div className="container mt-5 d-flex align-items-center justify-content-center">
     <div className="row flex-column">
@@ -18,4 +18,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default MainSignup
