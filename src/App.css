@@ -63,10 +63,16 @@ h1{
   color: var(--primary-color);
 }
 
+.volunteers-card{
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+}
 .volunteers-card img{
   width: 10rem;
   height: 3rem;
-  border-radius: 10rem;
+  border-radius: 30rem;
   justify-content: right;
   right: 0;
+
 }
