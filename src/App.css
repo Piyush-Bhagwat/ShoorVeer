@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;900&display=swap");
 
 :root{
-  --primary-color : #687eff;
+  --primary-color : #9d8ef4;
   --text-color : rgb(22, 22, 22); 
 }
 
@@ -30,6 +30,7 @@ h1{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 4%;
 }
 
 .user-icon{
@@ -49,4 +50,15 @@ h1{
 
 .user-name{
   margin-left: 4%;
+}
+
+.location{
+  display: flex;
+  align-items: center;
+}
+
+.location i{
+  font-size: 1.5em;
+  margin-right: 10px;
+  color: var(--primary-color);
 }
