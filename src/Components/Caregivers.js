@@ -1,3 +1,4 @@
+import { Component } from "react"
 import React from 'react'
 
 function Caregivers() {
@@ -6,8 +7,8 @@ function Caregivers() {
   width:' 18rem',
              display:'flex',
              justifyContent:'flex-end',
-             position:'absolute',
-            //  right:'0'
+            //  position:'absolute',
+             right:'0'
           }
           }>
   <img src="..." className="card-img-top" alt="..."/>
