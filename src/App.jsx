@@ -31,7 +31,6 @@ function App() {
     return (
         <div className="App">
             <Navbar />
-            <CatergoryCard />
             <Router>
                 <Routes>
                     <Route

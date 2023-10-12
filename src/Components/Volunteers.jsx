@@ -3,6 +3,7 @@ import docimg from '../images/Doctor+Preview.avif'
 function Volunteers({ name }) {
     return (
         <div className='volunteers-card'>
+            <img src={docimg}></img>
             <div className="right-side">
                 <h3>{name}</h3>
                 <div className='hearticon'>
@@ -13,7 +14,6 @@ function Volunteers({ name }) {
                 </div>
             </div>
 
-            <img src={docimg}></img>
         </div>
     )
 }

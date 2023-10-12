@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-const CatergoryCard = () => {
-  return (
-    <div className='category-card category-card-selected'>
-        CareTaker
-    </div>
-  )
-}
+const CatergoryCard = ({ name, isSelected }) => {
+    return (
+        <div
+            className={`category-card ${
+                isSelected && "category-card-selected"
+            }`}
+        >
+            {name}
+        </div>
+    );
+};
 
-export default CatergoryCard
+export default CatergoryCard;
