@@ -37,8 +37,6 @@ const PatientSignup = () => {
                 <input type="number" className="form-control" placeholder="Enter your age" />
               </div>
               <button className="btn btn-primary btn-block mb-3 mt-3">Register</button>
-              <hr />
-              <button className="btn btn-danger btn-block">Register with Google</button>
             </div>
           </div>
         </div>

@@ -17,8 +17,6 @@ const Login = () => {
               <input type="password" className="form-control" placeholder="Enter your password" />
             </div>
             <button className="btn btn-primary btn-block mb-3 mt-3">Login</button>
-            <hr />
-            <button className="btn btn-danger btn-block">Login with Google</button>
           </div>
         </div>
       </div>
