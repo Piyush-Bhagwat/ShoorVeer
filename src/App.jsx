@@ -7,7 +7,7 @@ import PatientSignup from "./pages/PatientSignup";
 import VolunteerSignup from "./pages/VolunteerSignup";
 import HomePage from "./pages/HomePage";
 import CatergoryCard from "./pages/catergoryCard";
-import { db, getDocuments } from "./Firebase/firebaseInit";
+import { getVolunteers } from "./Firebase/firebaseInit";
 import { useContext } from "react";
 import { AppContext } from "./context/appContext";
 import { useEffect } from "react";
@@ -23,6 +23,8 @@ function App() {
             setMode(lsUserData.type);
         }
     }, []);
+
+    // getVolunteers()
 
     return (
         <div className="App">

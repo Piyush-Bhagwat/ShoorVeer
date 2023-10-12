@@ -22,12 +22,36 @@ const db = getFirestore(app);
 const paitientCol = collection(db, "paitient");
 const volunteerCol = collection(db, "volunteer");
 
-const getDocuments = async () => {
+const getPaitients = async () => {
     const querySnapshot = await getDocs(paitientCol);
     querySnapshot.forEach((doc) => {
         console.log(`${doc.id} => ${doc.data()}`);
     });
 };
+const getVolunteers = async () => {
+    const querySnapshot = await getDocs(volunteerCol);
+    querySnapshot.forEach((doc) => {
+        // console.log(`${doc.id} => ${doc.data()}`);
+    });
+};
+
+
+const getLogin = async (data) => {
+    console.log("Login", data.email);
+    const querySnapshotPat = await getDocs(paitientCol);
+    querySnapshotPat.forEach((doc) => {
+        if(doc.data().email === data.email && doc.data().password === data.pass){
+            console.log("Email Found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! type Patient");
+        }
+    });
+    const querySnapshotVol = await getDocs(volunteerCol);
+    querySnapshotVol.forEach((doc) => {
+        if(doc.data().email === data.email && doc.data().password === data.pass){
+            console.log("Email Found!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! type Vol");
+        }
+    });
+}
+
 
 const setNewUser = async (data) => {
     try {
@@ -64,4 +88,4 @@ const setNewVolunteer = async (data) => {
     }
 };
 
-export { db, getDocuments, setNewUser, setNewVolunteer };
+export { db, getPaitients, getVolunteers,getLogin, setNewUser, setNewVolunteer };
