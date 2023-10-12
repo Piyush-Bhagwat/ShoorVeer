@@ -103,3 +103,46 @@ h1{
   width: 100%;
   justify-content: space-between;
 }
+
+
+/* ---------------------------------------------Volenteer Page----------------------- */
+
+.patient-card {
+  margin-top: 4% 0;
+  display: flex;
+  align-items: center;
+  height: 16vh;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+.patient-card img{
+  width: 4em;
+  object-fit: cover;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+
+.patient-card .buttons{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  
+  justify-content: space-between;
+}
+
+.patient-card .btn{
+  padding: 3px 5px;
+  box-shadow: var(--shadow);
+  color: white;
+}
+
+.patient-card .accept {
+  background-color: green;
+}
+.patient-card .reject {
+  background-color: red;
+}
