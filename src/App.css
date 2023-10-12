@@ -66,13 +66,29 @@ h1{
 .volunteers-card{
   display: flex;
   flex-direction: row;
-  padding: 2rem;
+  justify-content: center;
+  margin: 1.5rem 1rem;
+  justify-content: space-between;
 }
+.category-card{
+  
+}
+
+
 .volunteers-card img{
-  width: 10rem;
-  height: 3rem;
-  border-radius: 30rem;
+  width: 4rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
   justify-content: right;
   right: 0;
-
+}
+.hearticon h3{
+  justify-content: top;
+  font-size: 1.1rem;
+}
+.hearticon{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }

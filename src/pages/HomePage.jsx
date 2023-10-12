@@ -15,7 +15,7 @@ function HomePage() {
                 Bajaj Nagar, Nagpur
             </div>
 
-            <Volunteers name="JOker" />
+            <Volunteers name="Dev Mulkarwar" />
         </div>
     );
 }
