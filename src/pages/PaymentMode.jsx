@@ -20,7 +20,7 @@ const PaymentMode = () => {
     {
         const options = {
             key: "rzp_test_7RaAIogKviDUBl",
-            amount: "1000",
+            amount: "10000",
             currency: "INR",
             name: "Parag Borkar",
             description: "Care Connect",
@@ -32,7 +32,7 @@ const PaymentMode = () => {
             },
           };
           const razorpay = new window.Razorpay(options);
-         razorpay.open().then();
+         await razorpay.open();
           
     }
   }

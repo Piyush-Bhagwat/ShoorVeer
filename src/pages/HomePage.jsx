@@ -7,10 +7,12 @@ import { ToastContainer, toast } from "react-toastify";
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 import { makeRequest } from "../Firebase/firebaseInit";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
     const { location,volunteerSelected, volunteerList, userData } = useContext(AppContext);
-
+    const navigate = useNavigate();
+    
     const handleSendRequest = () => {
         const reqData = {
             loc: location,
@@ -21,6 +23,9 @@ function HomePage() {
         };
 
         makeRequest(reqData);
+        navigate("/payment");
+
+
 
         toast.success("Request Sent!", {
             position: "top-right",
