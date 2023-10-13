@@ -1,5 +1,4 @@
-import React from "react";
-import Volunteers from "../Components/Volunteers";
+import React, { useState } from "react";
 import PatientCard from "../Components/PatientCard";
 import { useEffect } from "react";
 import { getRequest } from "../Firebase/firebaseInit";
@@ -7,27 +6,28 @@ import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 
 const VolHome = () => {
-    const { userData,requestData, setRequestData,patientData } = useContext(AppContext);
+    const { userData, requestData, setRequestData, patientData } =
+        useContext(AppContext);
 
-    const readRequests = () => {
-        getRequest(userData.uid).then((res) => {
-            if (res) {
-                setRequestData(res);
-                clearInterval(intervalID);
-            }
-        });
-    };
+    useEffect(() => {
+        const readRequests = () => {
+            console.log("hello...");
+            getRequest(userData.uid).then((res) => {
+                if (res) {
+                    setRequestData(res);
+                    clearInterval(intervalId);
+                }
+            });
+        };
 
-    let intervalID = setInterval(async () => {
-        //Waiting for request
-        readRequests();
-    }, 4000);
+        const intervalId = setInterval(readRequests, 8000);
 
-    return (
-        <div>
-            {requestData && <PatientCard name={patientData?.name}/>}
-        </div>
-    );
+        return () => {
+            clearInterval(intervalId);
+        };
+    }, []);
+
+    return <div>{requestData && <PatientCard name={patientData?.name} />}</div>;
 };
 
 export default VolHome;

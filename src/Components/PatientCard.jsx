@@ -3,10 +3,15 @@ import profilePic from "../images/profilePic1.jpg";
 import axios from "axios";
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
+import { deleteDoc, deleteRequest } from "../Firebase/firebaseInit";
 
 const PatientCard = ({ name }) => {
-    const { requestData, userData } = useContext(AppContext);
-    const coor = { lat: 21.1458, log: 79.088155 };
+    const { requestData, userData, setRequestData } = useContext(AppContext);
+
+    const handleReject = () => {
+        deleteRequest(requestData.id);
+        setRequestData(null);
+    }
 
     return (
         <div className="patient-card">
@@ -23,7 +28,7 @@ const PatientCard = ({ name }) => {
                         Accept
                     </a>
                 </button>
-                <button className="btn reject">Reject</button>
+                <button className="btn reject" onClick={handleReject}>Reject</button>
             </div>
         </div>
     );

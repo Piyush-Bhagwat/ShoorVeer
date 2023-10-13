@@ -180,3 +180,8 @@ h1{
 .patient-card .reject {
   background-color: red;
 }
+
+.buttons a{
+  color: white;
+  text-decoration: none;
+}

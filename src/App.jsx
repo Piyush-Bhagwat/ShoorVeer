@@ -1,3 +1,4 @@
+"use strict"
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -6,13 +7,11 @@ import MainSignup from "./pages/MainSignup";
 import PatientSignup from "./pages/PatientSignup";
 import VolunteerSignup from "./pages/VolunteerSignup";
 import HomePage from "./pages/HomePage";
-import CatergoryCard from "./pages/catergoryCard";
 import { getVolunteers } from "./Firebase/firebaseInit";
 import { useContext } from "react";
 import { AppContext } from "./context/appContext";
 import { useEffect } from "react";
 import VolHome from "./pages/VolHome";
-import LocationApp from "./Components/location";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentMode from "./pages/PaymentMode";
@@ -73,6 +72,7 @@ function App() {
                     />
 
                     <Route path="/signup" element={<MainSignup />} />
+                    <Route path="/payment" element={<PaymentMode />} />
                     <Route path="/patientsignup" element={<PatientSignup />} />
                     <Route
                         path="/volunteersignup"

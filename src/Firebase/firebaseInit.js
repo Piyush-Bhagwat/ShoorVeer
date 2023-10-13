@@ -1,18 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, getDocs, addDoc, collection } from "@firebase/firestore";
+import { getFirestore, getDocs, addDoc, collection, deleteDoc, doc } from "@firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAEYB0xizI6r_uFhUeXEjt9x7MvDXDa8a0",
-    authDomain: "shoorveer-6880c.firebaseapp.com",
-    projectId: "shoorveer-6880c",
-    storageBucket: "shoorveer-6880c.appspot.com",
-    messagingSenderId: "684906100161",
-    appId: "1:684906100161:web:1a96ec319c7d9947da6b40",
-};
+    apiKey: "AIzaSyBFJnKQdeNInNZk2tl8PBQNwtAkd1jPBa8",
+    authDomain: "cafemangement.firebaseapp.com",
+    projectId: "cafemangement",
+    storageBucket: "cafemangement.appspot.com",
+    messagingSenderId: "333819729730",
+    appId: "1:333819729730:web:76dc32ceb03455f85a1adb"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -145,11 +145,15 @@ const getRequest= async (vid) => {
     querySnapshot.forEach((doc) => {
         if(doc.data().vid === vid){
             // console.log("Found Reqqqqqqqqqqqquest");
-            returnedData = doc.data();
+            returnedData = {...doc.data(), id: doc.id};
         }
     });
 
     return returnedData;
+}
+
+const deleteRequest = async (id) => {
+    await deleteDoc(doc(db, "requests", id));
 }
 
 export {
@@ -157,6 +161,7 @@ export {
     getPaitients,
     getVolunteers,
     makeRequest,
+    deleteRequest,
     getRequest,
     getLogin,
     setNewUser,
