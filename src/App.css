@@ -23,6 +23,12 @@ h1{
   font-weight: 800;
 }
 
+.highlight{
+  font-weight: 800;
+  color: #9280f7;
+  text-shadow: 2px 2px 4px #00000030;
+}
+
 .btn{
   background-color: var(--primary-color);
   color: white;
