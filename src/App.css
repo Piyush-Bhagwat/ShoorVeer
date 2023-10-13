@@ -181,6 +181,10 @@ h1{
   background-color: red;
 }
 
+.back-img{
+  width: 100%;
+}
+
 .buttons a{
   color: white;
   text-decoration: none;

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getRequest } from "../Firebase/firebaseInit";
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
+import backImg from "../images/undraw_Active_support_re_b7sj.png"
 
 const VolHome = () => {
     const { userData, requestData, setRequestData, patientData } =
@@ -27,7 +28,7 @@ const VolHome = () => {
         };
     }, []);
 
-    return <div>{requestData && <PatientCard name={patientData?.name} />}</div>;
+    return <div>{requestData ? <PatientCard name={patientData?.name} /> : <img className="back-img" src={backImg}/>}</div>;
 };
 
 export default VolHome;
