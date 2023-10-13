@@ -1,15 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 function navbar() {
+    const logoutHandler = () => {
+        localStorage.removeItem("userInfo");
+        window.location.href='/';
+        window.location.reload();
+    }
+
     return (
         <div className="nav-bar">
             <div className="logo-text">CareConnect</div>
 
-            <button className="user-icon">
-                <a href="#">
+            <button className="user-icon"
+                onClick={logoutHandler}
+            >
+                
                     <i class="fa-solid fa-user"></i>
-                </a>
+               
             </button>
         </div>
     );
