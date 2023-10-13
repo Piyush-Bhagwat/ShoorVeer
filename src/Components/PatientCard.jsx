@@ -18,6 +18,7 @@ const PatientCard = ({ name }) => {
                 <button className="btn accept">
                     <a
                         href={`https://www.google.com/maps/dir/?api=1&origin=${userData.location}&destination=136,Unnamed Road, Opp. YCCE, Wanadongri Ct, Wanadongri,Maharashtra 441110&travelmode=driving`}
+                        target="_blank"
                     >
                         Accept
                     </a>

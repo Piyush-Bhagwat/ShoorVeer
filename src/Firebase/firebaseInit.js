@@ -80,7 +80,7 @@ const getLogin = async (data) => {
                     name: doc.data().name,
                     email: doc.data().email,
                     type: "vol",
-                    location: doc.data().location
+                    location: doc.data().address
                 })
             );
 
@@ -118,7 +118,7 @@ const setNewVolunteer = async (data) => {
                 name: data.name,
                 email: data.email,
                 type: "vol",
-                location: data.location
+                location: data.address
             })
         );
         window.location.reload();
