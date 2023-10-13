@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 
+
+
 const PaymentMode = () => {
+    
   const [paymentMethod, setPaymentMethod] = useState('');
 
   const handlePaymentMethodChange = (event) => {
     setPaymentMethod(event.target.value);
   };
 
-
-  const handlePayment = () =>{
+  const handlePayment = async () =>{
     if(paymentMethod==="inhand")
     {
-        console.log("Order Placed");
+        window.location.href='/success';
     }
 
     if(paymentMethod==="online")
@@ -22,12 +24,16 @@ const PaymentMode = () => {
             currency: "INR",
             name: "Parag Borkar",
             description: "Care Connect",
+            handler: function (response) {
+                window.location.href='/success';
+              },
             theme: {
               color: "#9c003c",
             },
           };
           const razorpay = new window.Razorpay(options);
-          razorpay.open();
+         razorpay.open().then();
+          
     }
   }
 

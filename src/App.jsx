@@ -16,6 +16,7 @@ import LocationApp from "./Components/location";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentMode from "./pages/PaymentMode";
+import Success from "./pages/Success";
 
 function App() {
     const {
@@ -77,11 +78,16 @@ function App() {
                         path="/volunteersignup"
                         element={<VolunteerSignup />}
                     />
+                     <Route
+                        path="/success"
+                        element={<Success />}
+                    />
                 </Routes>
             </Router>
             {/* 
             <LocationApp /> */}
             <ToastContainer />
+           
         </div>
     );
 }
