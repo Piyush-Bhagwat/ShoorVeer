@@ -23,11 +23,16 @@ const paitientCol = collection(db, "paitient");
 const volunteerCol = collection(db, "volunteer");
 const requestCol = collection(db, "requests");
 
-const getPaitients = async () => {
+const getPaitients = async (id) => {
+    let data;
     const querySnapshot = await getDocs(paitientCol);
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
+        if(doc.id === id){
+            data = doc.data();
+        }
     });
+
+    return data;
 };
 const getVolunteers = async (category) => {
     let dat = [];
@@ -55,6 +60,7 @@ const getLogin = async (data) => {
                     name: doc.data().name,
                     email: doc.data().email,
                     type: "pet",
+                   
                 })
             );
 
@@ -74,6 +80,7 @@ const getLogin = async (data) => {
                     name: doc.data().name,
                     email: doc.data().email,
                     type: "vol",
+                    location: doc.data().location
                 })
             );
 
@@ -111,6 +118,7 @@ const setNewVolunteer = async (data) => {
                 name: data.name,
                 email: data.email,
                 type: "vol",
+                location: data.location
             })
         );
         window.location.reload();
@@ -129,11 +137,27 @@ const makeRequest = async (data) => {
     }
 };
 
+const getRequest= async (vid) => {
+    const querySnapshot = await getDocs(requestCol);
+
+    let returnedData; 
+
+    querySnapshot.forEach((doc) => {
+        if(doc.data().vid === vid){
+            // console.log("Found Reqqqqqqqqqqqquest");
+            returnedData = doc.data();
+        }
+    });
+
+    return returnedData;
+}
+
 export {
     db,
     getPaitients,
     getVolunteers,
     makeRequest,
+    getRequest,
     getLogin,
     setNewUser,
     setNewVolunteer,

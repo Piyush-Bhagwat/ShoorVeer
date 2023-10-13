@@ -2,6 +2,7 @@ import React, { createContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { getPaitients } from "../Firebase/firebaseInit";
 
 export const AppContext = createContext(null);
 
@@ -14,16 +15,33 @@ const AppContextProvider = (props) => {
     const [category, setCatergory] = useState("care-taker");
     const [volunteerList, setVolunteerList] = useState([]);
 
+    const [requestData, setRequestData] = useState(null);
+    const [patientData, setPatientData] = useState(null);
+
     useEffect(() => {
         console.log("userData: ", userData);
     }, [userData]);
 
     const getDeviceCurrentLocation = async () => {
         const locData = await axios.get("https://ipapi.co/json");
-        setLocation({ lat: locData.data.latitude, log: locData.data.longitude });
+        setLocation({
+            lat: locData.data.latitude,
+            log: locData.data.longitude,
+        });
     };
 
-    useEffect(()=>{console.log("VounteerList: ", volunteerList)}, [volunteerList]);
+    useEffect(()=> {
+        if(requestData){
+            console.log(requestData.uid);
+            getPaitients(requestData.uid).then((res)=>{
+                setPatientData(res);
+            });
+        }
+    }, [requestData]);
+
+    useEffect(() => {
+        console.log("VounteerList: ", volunteerList);
+    }, [volunteerList]);
 
     const contextValue = {
         isLogged,
@@ -34,6 +52,9 @@ const AppContextProvider = (props) => {
         location,
         getDeviceCurrentLocation,
         setLogged,
+        requestData,
+        setRequestData,
+        patientData,
         setMode,
         category,
         setCatergory,
