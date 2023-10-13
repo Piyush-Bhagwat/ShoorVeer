@@ -15,6 +15,7 @@ import VolHome from "./pages/VolHome";
 import LocationApp from "./Components/location";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PaymentMode from "./pages/PaymentMode";
 
 function App() {
     const {
@@ -80,7 +81,6 @@ function App() {
             </Router>
             {/* 
             <LocationApp /> */}
-
             <ToastContainer />
         </div>
     );
